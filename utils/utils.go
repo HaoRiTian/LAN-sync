@@ -10,15 +10,15 @@ func GetUploadPath() (string, error) {
     exe, _ := os.Executable()
     exeDir := filepath.Dir(exe)
     upPath := filepath.Join(exeDir, "uploads")
-    if !PathExists(upPath) {
+    if !FileOrPathIsExists(upPath) {
         err = os.Mkdir(upPath, os.ModePerm)
     }
     return upPath, err
 }
 
-func PathExists(path string) bool {
+func FileOrPathIsExists(path string) bool {
     _, err := os.Stat(path)
-    return If(err == nil, true, !os.IsNotExist(err)).(bool)
+    return err == nil || os.IsExist(err)
 }
 
 func If(cond bool, a interface{}, b interface{}) interface{} {
