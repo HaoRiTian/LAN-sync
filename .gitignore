@@ -1,4 +1,7 @@
 .idea
 .exe
 .txt
+.syso
+build
 node_modules
+uploads
