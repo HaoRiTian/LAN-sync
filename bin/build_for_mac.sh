@@ -1,6 +1,10 @@
 #!/bin/sh
 #version=$(git describe --tags $(git rev-list --tags='v[0-9].[0-9]*' --max-count=1))
 
+Script_Dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+Work_Dir="$( cd ${Script_Dir}/.. && pwd )"
+cd ${Work_Dir}
+
 APP="LAN-Sync.app"
 mkdir -p build/$APP/Contents/MacOS
 mkdir -p build/$APP/Contents/Resources
